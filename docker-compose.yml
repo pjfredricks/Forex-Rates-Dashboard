@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    ports:
+      - 5433:5432 # Since 5432 is running local instance of postgresql
+    environment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_DB: 'postgres_test'
+      POSTGRES_PASSWORD: 'root'
+    volumes:
+      - database-data:/var/lib/postgresql/data
+  springapp:
+    build: .
+    container_name: Rates_dashboard
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/postgres_test
+    ports:
+      - 8000:8080 # Since 8080 will be running local instance of application
+    restart: always
+    depends_on:
+      - db
+
+volumes:
+  database-data: # named volumes can be managed easier using docker-compose
