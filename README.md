@@ -5,5 +5,4 @@ A sample dashboard application which displays Forex exchange rates on a specific
 * Java 11
 * Maven
 * Spring Boot
-* React
 * Docker
