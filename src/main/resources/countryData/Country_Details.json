@@ -3,8 +3,7 @@
     "countryName": "Australia",
     "latitude": "-27",
     "longitude": "133",
-    "buyRate": 0.00,
-    "sellRate": 0.00,
+    "forexRate": 0.00,
     "countryCode": "AUD",
     "currencyName": "Australian dollar"
   },
@@ -12,8 +11,7 @@
     "countryName": "Canada",
     "latitude": "60",
     "longitude": "-95",
-    "buyRate": 0.00,
-    "sellRate": 0.00,
+    "forexRate": 0.00,
     "countryCode": "CAD",
     "currencyName": "Canadian dollar"
   },
@@ -21,8 +19,7 @@
     "countryName": "China",
     "latitude": "35",
     "longitude": "105",
-    "buyRate": 0.00,
-    "sellRate": 0.00,
+    "forexRate": 0.00,
     "countryCode": "CNY",
     "currencyName": "Chinese yuan"
   },
@@ -30,8 +27,7 @@
     "countryName": "Denmark",
     "latitude": "56",
     "longitude": "10",
-    "buyRate": 0.00,
-    "sellRate": 0.00,
+    "forexRate": 0.00,
     "countryCode": "DKK",
     "currencyName": "Danish krone"
   },
@@ -39,8 +35,7 @@
     "countryName": "Fiji",
     "latitude": "-18",
     "longitude": "175",
-    "buyRate": 0.00,
-    "sellRate": 0.00,
+    "forexRate": 0.00,
     "countryCode": "FJD",
     "currencyName": "Fijian dollar"
   },
@@ -48,8 +43,7 @@
     "countryName": "Germany",
     "latitude": "51",
     "longitude": "9",
-    "buyRate": 0.00,
-    "sellRate": 0.00,
+    "forexRate": 0.00,
     "countryCode": "EUR",
     "currencyName": "Euro"
   },
@@ -57,8 +51,7 @@
     "countryName": "Hong Kong",
     "latitude": "22.25",
     "longitude": "114.16666666",
-    "buyRate": 0.00,
-    "sellRate": 0.00,
+    "forexRate": 0.00,
     "countryCode": "HKD",
     "currencyName": "Hong Kong dollar"
   },
@@ -66,8 +59,7 @@
     "countryName": "Indonesia",
     "latitude": "-5",
     "longitude": "120",
-    "buyRate": 0.00,
-    "sellRate": 0.00,
+    "forexRate": 0.00,
     "countryCode": "IDR",
     "currencyName": "Indonesian rupiah"
   },
@@ -75,8 +67,7 @@
     "countryName": "Israel",
     "latitude": "31.5",
     "longitude": "34.75",
-    "buyRate": 0.00,
-    "sellRate": 0.00,
+    "forexRate": 0.00,
     "countryCode": "ILS",
     "currencyName": "Israeli new shekel"
   },
@@ -84,8 +75,7 @@
     "countryName": "Japan",
     "latitude": "36",
     "longitude": "138",
-    "buyRate": 0.00,
-    "sellRate": 0.00,
+    "forexRate": 0.00,
     "countryCode": "JPY",
     "currencyName": "Japanese yen"
   },
@@ -93,8 +83,7 @@
     "countryName": "South Korea",
     "latitude": "37",
     "longitude": "127.5",
-    "buyRate": 0.00,
-    "sellRate": 0.00,
+    "forexRate": 0.00,
     "countryCode": "KRW",
     "currencyName": "South Korean won"
   },
@@ -102,8 +91,7 @@
     "countryName": "Malaysia",
     "latitude": "2.5",
     "longitude": "112.5",
-    "buyRate": 0.00,
-    "sellRate": 0.00,
+    "forexRate": 0.00,
     "countryCode": "MYR",
     "currencyName": "Malaysian ringgit"
   },
@@ -111,8 +99,7 @@
     "countryName": "New Zealand",
     "latitude": "-41",
     "longitude": "174",
-    "buyRate": 0.00,
-    "sellRate": 0.00,
+    "forexRate": 0.00,
     "countryCode": "NZD",
     "currencyName": "New Zealand dollar"
   },
@@ -120,8 +107,7 @@
     "countryName": "Norway",
     "latitude": "62",
     "longitude": "10",
-    "buyRate": 0.00,
-    "sellRate": 0.00,
+    "forexRate": 0.00,
     "countryCode": "NOK",
     "currencyName": "Norwegian krone"
   },
@@ -129,8 +115,7 @@
     "countryName": "Philippines",
     "latitude": "13",
     "longitude": "122",
-    "buyRate": 0.00,
-    "sellRate": 0.00,
+    "forexRate": 0.00,
     "countryCode": "PHP",
     "currencyName": "Philippine peso"
   },
@@ -138,8 +123,7 @@
     "countryName": "Saudi Arabia",
     "latitude": "25",
     "longitude": "45",
-    "buyRate": 0.00,
-    "sellRate": 0.00,
+    "forexRate": 0.00,
     "countryCode": "SAR",
     "currencyName": "Saudi riyal"
   },
@@ -147,8 +131,7 @@
     "countryName": "Singapore",
     "latitude": "1.36666666",
     "longitude": "103.8",
-    "buyRate": 0.00,
-    "sellRate": 0.00,
+    "forexRate": 0.00,
     "countryCode": "SGD",
     "currencyName": "Singapore Dollar"
   },
@@ -156,8 +139,7 @@
     "countryName": "South Africa",
     "latitude": "-29",
     "longitude": "24",
-    "buyRate": 0.00,
-    "sellRate": 0.00,
+    "forexRate": 0.00,
     "countryCode": "ZAR",
     "currencyName": "South African rand"
   },
@@ -165,8 +147,7 @@
     "countryName": "Sweden",
     "latitude": "62",
     "longitude": "15",
-    "buyRate": 0.00,
-    "sellRate": 0.00,
+    "forexRate": 0.00,
     "countryCode": "SEK",
     "currencyName": "Swedish krona"
   },
@@ -174,8 +155,7 @@
     "countryName": "Switzerland",
     "latitude": "47",
     "longitude": "8",
-    "buyRate": 0.00,
-    "sellRate": 0.00,
+    "forexRate": 0.00,
     "countryCode": "CHF",
     "currencyName": "Swiss franc"
   },
@@ -183,8 +163,7 @@
     "countryName": "Thailand",
     "latitude": "15",
     "longitude": "100",
-    "buyRate": 0.00,
-    "sellRate": 0.00,
+    "forexRate": 0.00,
     "countryCode": "THB",
     "currencyName": "Thai baht"
   },
@@ -192,8 +171,7 @@
     "countryName": "United Kingdom",
     "latitude": "54",
     "longitude": "-2",
-    "buyRate": 0.00,
-    "sellRate": 0.00,
+    "forexRate": 0.00,
     "countryCode": "GBP",
     "currencyName": "British pound"
   },
@@ -201,8 +179,7 @@
     "countryName": "USA",
     "latitude": "38",
     "longitude": "-97",
-    "buyRate": 0.00,
-    "sellRate": 0.00,
+    "forexRate": 0.00,
     "countryCode": "USD",
     "currencyName": "United States dollar"
   }

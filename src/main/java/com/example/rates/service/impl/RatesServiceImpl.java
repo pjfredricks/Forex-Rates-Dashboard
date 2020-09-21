@@ -18,7 +18,6 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -84,18 +83,26 @@ public class RatesServiceImpl implements RatesService {
         double inrValue = currencyValues.get("INR").doubleValue();
 
         // Remove unwanted countries and convert rates
-        currencyValues.keySet().retainAll(countryList);
-        currencyValues.entrySet().forEach(currencyValue -> currencyValue.setValue(currencyValue.getValue().doubleValue() / inrValue));
-        currencyValues.replaceAll((countryCode, currencyValue) -> convertRate(1 / currencyValue.doubleValue(), 6));
+        currencyValues.keySet()
+                .retainAll(countryList);
+        currencyValues.entrySet()
+                .forEach(currencyValue -> currencyValue.setValue(currencyValue.getValue().doubleValue() / inrValue));
+        currencyValues.replaceAll(
+                (countryCode, currencyValue) -> convertRate(1 / currencyValue.doubleValue())
+        );
 
-        // Set buy and sell Rates, and update carousel values
+        // Set buy and sell Rates
         exchangeRates = exchangeRates.stream()
                 .map(forexRate -> setCarouselAndRates(forexRate, currencyValues))
                 .sorted(Comparator.comparing(ForexRates::getCountryName))
                 .collect(Collectors.toList());
 
         updateDailyRates();
-        saveDailyRates();
+    }
+
+    @Override
+    public void addRates() {
+        updateRates();
     }
 
     @Override
@@ -110,64 +117,32 @@ public class RatesServiceImpl implements RatesService {
         exchangeRates.forEach(exchangeRate -> {
             DailyRatesData dailyRatesData = new DailyRatesData();
             BeanUtils.copyProperties(exchangeRate, dailyRatesData);
-            dailyRatesDataList.add(dailyRatesData);
+            dailyRatesData.setCreateDate(LocalDateTime.now().toString());
+            ratesRepository.save(dailyRatesData);
         });
     }
 
-    private void saveDailyRates() {
-        if (!dailyRatesDataList.isEmpty()) {
-            dailyRatesDataList.forEach(ratesData -> {
-                ratesData.setCreateDate(LocalDateTime.now().toString());
-                ratesRepository.save(ratesData);
-            });
-        }
+    @Override
+    public void deleteRates() {
+        ratesRepository.deleteAll();
     }
 
     private ForexRates setCarouselAndRates(ForexRates forexRate, Map<String, Number> currencyValues) {
-        forexRate.setCarousel(true);
-
-        if (noCarouselCountryList.contains(forexRate.getCountryCode())) {
-            forexRate.setCarousel(false);
-        }
         if (ObjectUtils.isNotEmpty(currencyValues.get(forexRate.getCountryCode()))) {
-            forexRate.setBuyRate(
-                    calculateBuyRate(currencyValues.get(forexRate.getCountryCode()).doubleValue()));
-            forexRate.setSellRate(
-                    calculateSellRate(currencyValues.get(forexRate.getCountryCode()).doubleValue()));
+            forexRate.setForexRate(
+                    convertRate(currencyValues.get(forexRate.getCountryCode()).doubleValue()));
         }
         return forexRate;
     }
 
-    private double calculateBuyRate(double currencyValue) {
-        int percent = 2;
-
-        if (currencyValue < 0.01) {
-            return convertRate(currencyValue, 4);
+    private double convertRate(double currencyValue) {
+        int scalingValue = 2;
+        if (currencyValue < 1.0) {
+            scalingValue = 4;
         }
-        if (currencyValue < 5.000) percent = 6;
-        else if (currencyValue < 30.000) percent = 5;
-        else if (currencyValue < 80.000) percent = 3;
-
-        currencyValue = currencyValue - (currencyValue / 100) * percent;
-        return convertRate(currencyValue, 2);
-    }
-
-    private double calculateSellRate(double currencyValue) {
-        int percent = 1;
-
         if (currencyValue < 0.01) {
-            return convertRate(currencyValue, 4);
+            scalingValue = 6;
         }
-
-        if (currencyValue < 5.000) percent = 4;
-        else if (currencyValue < 30.000) percent = 3;
-        else if (currencyValue < 80.000) percent = 2;
-
-        currencyValue = currencyValue - (currencyValue / 100) * percent;
-        return convertRate(currencyValue, 2);
-    }
-
-    private double convertRate(double currencyValue, int scalingValue) {
         return BigDecimal.valueOf(currencyValue).setScale(scalingValue, RoundingMode.HALF_EVEN).doubleValue();
     }
 

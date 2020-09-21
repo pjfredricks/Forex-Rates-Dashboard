@@ -8,9 +8,5 @@ import java.util.List;
 
 @Repository
 public interface RatesRepository extends JpaRepository<DailyRatesData, Integer> {
-    List<DailyRatesData> findAll();
 
-    DailyRatesData save(DailyRatesData ratesData);
-
-    DailyRatesData findAllByCreateDate(String date);
 }

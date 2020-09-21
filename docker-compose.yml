@@ -2,10 +2,11 @@ version: '3'
 
 services:
   db:
-    image: postgres:latest
+    image: postgres:10.14-alpine
     restart: always
+    # [localhost port]:[default service port in docker]
     ports:
-      - 5433:5432 # Since 5432 is running local instance of postgresql
+      - 5432:5432
     environment:
       POSTGRES_USER: 'postgres'
       POSTGRES_DB: 'postgres_test'
@@ -14,11 +15,12 @@ services:
       - database-data:/var/lib/postgresql/data
   springapp:
     build: .
-    container_name: Rates_dashboard
+    container_name: dashboard
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/postgres_test
+    # [localhost port]:[default service port in docker]
     ports:
-      - 8000:8080 # Since 8080 will be running local instance of application
+      - 8081:8080
     restart: always
     depends_on:
       - db

@@ -19,13 +19,25 @@ public class RatesController {
     }
 
     @PutMapping(path = "/rates")
-    public ResponseEntity<String> refreshRates() {
+    public ResponseEntity<String> updateRates() {
         ratesService.updateRates();
-        return new ResponseEntity<>("Rates have been updated", HttpStatus.OK);
+        return new ResponseEntity<>("Rates have been updated", HttpStatus.ACCEPTED);
+    }
+
+    @PostMapping(path = "/rates")
+    public ResponseEntity<String> addRates() {
+        ratesService.addRates();
+        return new ResponseEntity<>("Rates have been updated", HttpStatus.ACCEPTED);
     }
 
     @GetMapping(path = "/rates")
     public ResponseEntity<List<ForexRates>> fetchRates() {
         return new ResponseEntity<>(ratesService.fetchRates(), HttpStatus.OK);
+    }
+
+    @DeleteMapping(path = "/rates")
+    public ResponseEntity<String> deleteRates() {
+        ratesService.deleteRates();
+        return new ResponseEntity<>("Rates have been deleted", HttpStatus.ACCEPTED);
     }
 }

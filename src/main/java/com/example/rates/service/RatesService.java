@@ -7,6 +7,10 @@ import java.util.List;
 public interface RatesService {
 
 	void updateRates();
+
+	void addRates();
 	
 	List<ForexRates> fetchRates();
+
+	void deleteRates();
 }
